@@ -6,8 +6,15 @@
 # Licenced under Academic Free License version 2.0
 # Review ps2sdk README & LICENSE files for further details.
 
-SUBDIRS = kernel dev9 fs hdd sound tcpip usb system debug memorycard network iLink cdvd sio dvrp startup
+all:
 
 include $(PS2SDKSRC)/Defs.make
-include $(PS2SDKSRC)/Rules.make
+include $(PS2SDKSRC)/iop/Rules.make
 include $(PS2SDKSRC)/iop/Rules.release
+
+clean:
+
+release:
+	$(ECHO) Installing $(IOP_SRC_DIR)linkfile into $(PS2SDK)/iop/startup
+	cp -f $(IOP_SRC_DIR)linkfile $(PS2SDK)/iop/startup
+
