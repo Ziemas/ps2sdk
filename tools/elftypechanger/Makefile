@@ -6,15 +6,9 @@
 # Licenced under Academic Free License version 2.0
 # Review ps2sdk README & LICENSE files for further details.
 
-SUBDIRS = \
-	adpenc \
-	bin2c \
-	bin2o \
-	bin2s \
-	elftypechanger \
-	ps2adpcm \
-#	  gensymtab
+TOOLS_OBJS = elftypechanger.o
 
 include $(PS2SDKSRC)/Defs.make
-include $(PS2SDKSRC)/Rules.make
+include $(PS2SDKSRC)/tools/Rules.bin.make
+include $(PS2SDKSRC)/tools/Rules.make
 include $(PS2SDKSRC)/tools/Rules.release
