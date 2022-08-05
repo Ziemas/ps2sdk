@@ -84,47 +84,4 @@ u32 GetHoldReg(int holdnum);
 
 int GetHardTimerIntrCode(int timid);
 
-#define timrman_IMPORTS \
-	timrman_IMPORTS_start \
- \
- 	I_AllocHardTimer \
-	I_ReferHardTimer \
-	I_FreeHardTimer \
- \
-	I_SetTimerMode \
- \
-	I_GetTimerStatus \
- \
-	I_SetTimerCounter \
-	I_GetTimerCounter \
- \
-	I_SetTimerCompare \
-	I_GetTimerCompare \
- \
-	I_SetHoldMode \
-	I_GetHoldMode \
- \
-	I_GetHardTimerIntrCode \
- \
-	timrman_IMPORTS_end END_IMPORT_TABLE
-
-
-#define timrman_IMPORTS_start DECLARE_IMPORT_TABLE(timrman, 1, 1)
-#define timrman_IMPORTS_end END_IMPORT_TABLE
-
-#define I_GetTimersTable DECLARE_IMPORT(3, GetTimersTable)
-#define I_AllocHardTimer DECLARE_IMPORT(4, AllocHardTimer)
-#define I_ReferHardTimer DECLARE_IMPORT(5, ReferHardTimer)
-#define I_FreeHardTimer DECLARE_IMPORT(6, FreeHardTimer)
-#define I_SetTimerMode DECLARE_IMPORT(7, SetTimerMode)
-#define I_GetTimerStatus DECLARE_IMPORT(8, GetTimerStatus)
-#define I_SetTimerCounter DECLARE_IMPORT(9, SetTimerCounter)
-#define I_GetTimerCounter DECLARE_IMPORT(10, GetTimerCounter)
-#define I_SetTimerCompare DECLARE_IMPORT(11, SetTimerCompare)
-#define I_GetTimerCompare DECLARE_IMPORT(12, GetTimerCompare)
-#define I_SetHoldMode DECLARE_IMPORT(13, SetHoldMode)
-#define I_GetHoldMode DECLARE_IMPORT(14, GetHoldMode)
-#define I_GetHoldReg DECLARE_IMPORT(15, GetHoldReg)
-#define I_GetHardTimerIntrCode DECLARE_IMPORT(16, GetHardTimerIntrCode)
-
 #endif /* __TIMRMAN_H__ */

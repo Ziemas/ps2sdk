@@ -1,0 +1,21 @@
+library timrman
+version 1.1
+export 3 GetTimersTable
+export 4 AllocHardTimer
+export 5 ReferHardTimer
+export 6 FreeHardTimer
+export 7 SetTimerMode
+export 8 GetTimerStatus
+export 9 SetTimerCounter
+export 10 GetTimerCounter
+export 11 SetTimerCompare
+export 12 GetTimerCompare
+export 13 SetHoldMode
+export 14 GetHoldMode
+export 15 GetHoldReg
+export 16 GetHardTimerIntrCode
+export 20 SetTimerHandler
+export 21 SetOverflowHandler
+export 22 SetupHardTimer
+export 23 StartHardTimer
+export 24 StopHardTimer
