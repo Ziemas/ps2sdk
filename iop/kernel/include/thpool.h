@@ -54,18 +54,6 @@ int FreeFpl(int fplId, void *memory);
 int ReferFplStatus(int fplId, iop_fpl_info_t *info);
 int iReferFplStatus(int fplId, iop_fpl_info_t *info);
 
-#define thfpool_IMPORTS_start DECLARE_IMPORT_TABLE(thfpool, 1, 1)
-#define thfpool_IMPORTS_end END_IMPORT_TABLE
-
-#define I_CreateFpl DECLARE_IMPORT(4, CreateFpl)
-#define I_DeleteFpl DECLARE_IMPORT(5, DeleteFpl)
-#define I_AllocateFpl DECLARE_IMPORT(6, AllocateFpl)
-#define I_pAllocateFpl DECLARE_IMPORT(7, pAllocateFpl)
-#define I_ipAllocateFpl DECLARE_IMPORT(8, ipAllocateFpl)
-#define I_FreeFpl DECLARE_IMPORT(9, FreeFpl)
-#define I_ReferFplStatus DECLARE_IMPORT(11, ReferFplStatus)
-#define I_iReferFplStatus DECLARE_IMPORT(12, iReferFplStatus)
-
 /*
  * Variable length memory pool
 */
@@ -98,17 +86,5 @@ void *ipAllocateVpl(int vplId, int size);
 int FreeVpl(int vplId, void *memory);
 int ReferVplStatus(int vplId, iop_vpl_info_t *info);
 int iReferVplStatus(int vplId, iop_vpl_info_t *info);
-
-#define thvpool_IMPORTS_start DECLARE_IMPORT_TABLE(thvpool, 1, 1)
-#define thvpool_IMPORTS_end END_IMPORT_TABLE
-
-#define I_CreateVpl DECLARE_IMPORT(4, CreateVpl)
-#define I_DeleteVpl DECLARE_IMPORT(5, DeleteVpl)
-#define I_AllocateVpl DECLARE_IMPORT(6, AllocateVpl)
-#define I_pAllocateVpl DECLARE_IMPORT(7, pAllocateVpl)
-#define I_ipAllocateVpl DECLARE_IMPORT(8, ipAllocateVpl)
-#define I_FreeVpl DECLARE_IMPORT(9, FreeVpl)
-#define I_ReferVplStatus DECLARE_IMPORT(11, ReferVplStatus)
-#define I_iReferVplStatus DECLARE_IMPORT(12, iReferVplStatus)
 
 #endif /* __THPOOL_H__ */

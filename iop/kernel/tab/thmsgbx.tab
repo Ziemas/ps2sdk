@@ -1,0 +1,10 @@
+library thmsgbx
+version 1.1
+export 4 CreateMbx
+export 5 DeleteMbx
+export 6 SendMbx
+export 7 iSendMbx
+export 8 ReceiveMbx
+export 9 PollMbx
+export 11 ReferMbxStatus
+export 12 iReferMbxStatus

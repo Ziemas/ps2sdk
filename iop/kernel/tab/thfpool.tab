@@ -1,0 +1,10 @@
+library thfpool
+version 1.1
+export 4 CreateFpl
+export 5 DeleteFpl
+export 6 AllocateFpl
+export 7 pAllocateFpl
+export 8 ipAllocateFpl
+export 9 FreeFpl
+export 11 ReferFplStatus
+export 12 iReferFplStatus

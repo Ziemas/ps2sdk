@@ -64,16 +64,4 @@ int PollMbx(void **msgvar, int mbxid);
 int ReferMbxStatus(int mbxid, iop_mbx_status_t *info);
 int iReferMbxStatus(int mbxid, iop_mbx_status_t *info);
 
-#define thmsgbx_IMPORTS_start DECLARE_IMPORT_TABLE(thmsgbx, 1, 1)
-#define thmsgbx_IMPORTS_end END_IMPORT_TABLE
-
-#define I_CreateMbx DECLARE_IMPORT(4, CreateMbx)
-#define I_DeleteMbx DECLARE_IMPORT(5, DeleteMbx)
-#define I_SendMbx DECLARE_IMPORT(6, SendMbx)
-#define I_iSendMbx DECLARE_IMPORT(7, iSendMbx)
-#define I_ReceiveMbx DECLARE_IMPORT(8, ReceiveMbx)
-#define I_PollMbx DECLARE_IMPORT(9, PollMbx)
-#define I_ReferMbxStatus DECLARE_IMPORT(11, ReferMbxStatus)
-#define I_iReferMbxStatus DECLARE_IMPORT(12, iReferMbxStatus)
-
 #endif /* __THMSGBX_H__ */

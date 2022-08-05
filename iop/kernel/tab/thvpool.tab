@@ -1,0 +1,10 @@
+library thvpool
+version 1.1
+export 4 CreateVpl
+export 5 DeleteVpl
+export 6 AllocateVpl
+export 7 pAllocateVpl
+export 8 ipAllocateVpl
+export 9 FreeVpl
+export 11 ReferVplStatus
+export 12 iReferVplStatus
