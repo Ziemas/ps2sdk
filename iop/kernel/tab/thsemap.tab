@@ -1,0 +1,10 @@
+library thsemap
+version 1.2
+export 4 CreateSema
+export 5 DeleteSema
+export 6 SignalSema
+export 7 iSignalSema
+export 8 WaitSema
+export 9 PollSema
+export 11 ReferSemaStatus
+export 12 iReferSemaStatus

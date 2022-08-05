@@ -72,16 +72,4 @@ static inline int CreateMutex(int state)
 	return CreateSema(&sema);
 }
 
-#define thsemap_IMPORTS_start DECLARE_IMPORT_TABLE(thsemap, 1, 2)
-#define thsemap_IMPORTS_end END_IMPORT_TABLE
-
-#define I_CreateSema DECLARE_IMPORT(4, CreateSema)
-#define I_DeleteSema DECLARE_IMPORT(5, DeleteSema)
-#define I_SignalSema DECLARE_IMPORT(6, SignalSema)
-#define I_iSignalSema DECLARE_IMPORT(7, iSignalSema)
-#define I_WaitSema DECLARE_IMPORT(8, WaitSema);
-#define I_PollSema DECLARE_IMPORT(9, PollSema);
-#define I_ReferSemaStatus DECLARE_IMPORT(11, ReferSemaStatus)
-#define I_iReferSemaStatus DECLARE_IMPORT(12, iReferSemaStatus)
-
 #endif /* __THSEMAP_H__ */
