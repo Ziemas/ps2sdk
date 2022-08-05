@@ -130,40 +130,4 @@ void dmac_ch_set_dpcr(u32 channel, u32 val);	//sceSetDMAPriority
 void dmac_enable(u32 channel);	//sceEnableDMAChannel
 void dmac_disable(u32 channel);	//sceDisableDMAChannel
 
-#define dmacman_IMPORTS_start DECLARE_IMPORT_TABLE(dmacman, 1, 1)
-#define dmacman_IMPORTS_end END_IMPORT_TABLE
-
-#define I_dmac_ch_set_madr DECLARE_IMPORT(4, dmac_ch_set_madr)
-#define I_dmac_ch_get_madr DECLARE_IMPORT(5, dmac_ch_get_madr)
-#define I_dmac_ch_set_bcr DECLARE_IMPORT(6, dmac_ch_set_bcr)
-#define I_dmac_ch_get_bcr DECLARE_IMPORT(7, dmac_ch_get_bcr)
-#define I_dmac_ch_set_chcr DECLARE_IMPORT(8, dmac_ch_set_chcr)
-#define I_dmac_ch_get_chcr DECLARE_IMPORT(9, dmac_ch_get_chcr)
-#define I_dmac_ch_set_tadr DECLARE_IMPORT(10, dmac_ch_set_tadr)
-#define I_dmac_ch_get_tadr DECLARE_IMPORT(11, dmac_ch_get_tadr)
-#define I_dmac_set_4_9_a DECLARE_IMPORT(12, dmac_set_4_9_a)
-#define I_dmac_get_4_9_a DECLARE_IMPORT(13, dmac_get_4_9_a)
-#define I_dmac_set_dpcr DECLARE_IMPORT(14, dmac_set_dpcr)
-#define I_dmac_get_dpcr DECLARE_IMPORT(15, dmac_get_dpcr)
-#define I_dmac_set_dpcr2 DECLARE_IMPORT(16, dmac_set_dpcr2)
-#define I_dmac_get_dpcr2 DECLARE_IMPORT(17, dmac_get_dpcr2)
-#define I_dmac_set_dpcr3 DECLARE_IMPORT(18, dmac_set_dpcr3)
-#define I_dmac_get_dpcr3 DECLARE_IMPORT(19, dmac_get_dpcr3)
-#define I_dmac_set_dicr DECLARE_IMPORT(20, dmac_set_dicr)
-#define I_dmac_get_dicr DECLARE_IMPORT(21, dmac_get_dicr)
-#define I_dmac_set_dicr2 DECLARE_IMPORT(22, dmac_set_dicr2)
-#define I_dmac_get_dicr2 DECLARE_IMPORT(23, dmac_get_dicr2)
-#define I_dmac_set_BF80157C DECLARE_IMPORT(24, dmac_set_BF80157C)
-#define I_dmac_get_BF80157C DECLARE_IMPORT(25, dmac_get_BF80157C)
-#define I_dmac_set_BF801578 DECLARE_IMPORT(26, dmac_set_BF801578)
-#define I_dmac_get_BF801578 DECLARE_IMPORT(27, dmac_get_BF801578)
-#define I_dmac_request DECLARE_IMPORT(28, dmac_request)
-#define I_dmac_set_dma_chained_spu_sif0 DECLARE_IMPORT(29, dmac_set_dma_chained_spu_sif0)
-#define I_dmac_set_dma_sif0 DECLARE_IMPORT(30, dmac_set_dma_sif0)
-#define I_dmac_set_dma_sif1 DECLARE_IMPORT(31, dmac_set_dma_sif1)
-#define I_dmac_transfer DECLARE_IMPORT(32, dmac_transfer)
-#define I_dmac_ch_set_dpcr DECLARE_IMPORT(33, dmac_ch_set_dpcr)
-#define I_dmac_enable DECLARE_IMPORT(34, dmac_enable)
-#define I_dmac_disable DECLARE_IMPORT(35, dmac_disable)
-
 #endif /* __DMACMAN_H__ */

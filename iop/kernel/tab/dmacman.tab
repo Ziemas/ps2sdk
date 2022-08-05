@@ -1,0 +1,34 @@
+library dmacman
+version 1.1
+export 4 dmac_ch_set_madr
+export 5 dmac_ch_get_madr
+export 6 dmac_ch_set_bcr
+export 7 dmac_ch_get_bcr
+export 8 dmac_ch_set_chcr
+export 9 dmac_ch_get_chcr
+export 10 dmac_ch_set_tadr
+export 11 dmac_ch_get_tadr
+export 12 dmac_set_4_9_a
+export 13 dmac_get_4_9_a
+export 14 dmac_set_dpcr
+export 15 dmac_get_dpcr
+export 16 dmac_set_dpcr2
+export 17 dmac_get_dpcr2
+export 18 dmac_set_dpcr3
+export 19 dmac_get_dpcr3
+export 20 dmac_set_dicr
+export 21 dmac_get_dicr
+export 22 dmac_set_dicr2
+export 23 dmac_get_dicr2
+export 24 dmac_set_BF80157C
+export 25 dmac_get_BF80157C
+export 26 dmac_set_BF801578
+export 27 dmac_get_BF801578
+export 28 dmac_request
+export 29 dmac_set_dma_chained_spu_sif0
+export 30 dmac_set_dma_sif0
+export 31 dmac_set_dma_sif1
+export 32 dmac_transfer
+export 33 dmac_ch_set_dpcr
+export 34 dmac_enable
+export 35 dmac_disable
