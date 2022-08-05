@@ -102,17 +102,17 @@ $(IOP_OBJS_DIR)%.S: $(IOP_SRC_DIR)%.tab
 	$(DIR_GUARD)
 	$(IOP_LIBGEN) -s $@ $<
 
-$(IOP_OBJS_DIR)build-imports.S:
+$(IOP_OBJS_DIR)build-imports.S: $(IOP_OBJS)
 	$(DIR_GUARD)
 	$(IOP_LIBLD) -s $@ -i $(IOP_OBJS) -l $(IOP_ILBS) -n $(IOP_NM)
 
-$(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.S
+$(IOP_OBJS_DIR)build-imports.o: $(IOP_OBJS_DIR)build-imports.S
 	$(DIR_GUARD)
 	$(IOP_C_COMPILE) $(IOP_CFLAGS) -c $< -o $@
 
-$(IOP_BIN_ELF): $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o
+$(IOP_BIN_ELF): $(IOP_OBJS) $(IOP_OBJS_DIR)build-imports.o
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o $(IOP_LDFLAGS) $(IOP_LIBS)
+	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_OBJS_DIR)build-imports.o $(IOP_LDFLAGS) $(IOP_LIBS)
 
 $(IOP_BIN): $(IOP_BIN_ELF)
 	$(DIR_GUARD)
