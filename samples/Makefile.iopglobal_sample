@@ -104,7 +104,7 @@ $(IOP_OBJS_DIR)exports.o: $(IOP_OBJS_DIR)build-exports.S
 
 $(IOP_OBJS_DIR)build-imports.S:
 	$(DIR_GUARD)
-	$(IOP_LIBLD) -s $@ -i $(IOP_OBJS) -l $(IOP_ILBS)
+	$(IOP_LIBLD) -s $@ -i $(IOP_OBJS) -l $(IOP_ILBS) -n $(IOP_NM)
 
 $(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.S
 	$(DIR_GUARD)
