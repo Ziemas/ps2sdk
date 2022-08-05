@@ -91,25 +91,4 @@ typedef struct _iop_io_device_ops {
 int io_AddDrv(iop_io_device_t *device);
 int io_DelDrv(const char *name);
 
-#define ioman_mod_IMPORTS_start DECLARE_IMPORT_TABLE(ioman, 1, 1)
-#define ioman_mod_IMPORTS_end END_IMPORT_TABLE
-
-#define I_io_open DECLARE_IMPORT(4, io_open)
-#define I_io_close DECLARE_IMPORT(5, io_close)
-#define I_io_read DECLARE_IMPORT(6, io_read)
-#define I_io_write DECLARE_IMPORT(7, io_write)
-#define I_io_lseek DECLARE_IMPORT(8, io_lseek)
-#define I_io_ioctl DECLARE_IMPORT(9, io_ioctl)
-#define I_io_remove DECLARE_IMPORT(10, io_remove)
-#define I_io_mkdir DECLARE_IMPORT(11, io_mkdir)
-#define I_io_rmdir DECLARE_IMPORT(12, io_rmdir)
-#define I_io_dopen DECLARE_IMPORT(13, io_dopen)
-#define I_io_dclose DECLARE_IMPORT(14, io_dclose)
-#define I_io_dread DECLARE_IMPORT(15, io_dread)
-#define I_io_getstat DECLARE_IMPORT(16, io_getstat)
-#define I_io_chstat DECLARE_IMPORT(17, io_chstat)
-#define I_io_format DECLARE_IMPORT(18, io_format)
-#define I_io_AddDrv DECLARE_IMPORT(20, io_AddDrv);
-#define I_io_DelDrv DECLARE_IMPORT(21, io_DelDrv);
-
 #endif /* __IOMAN_MOD_H__ */

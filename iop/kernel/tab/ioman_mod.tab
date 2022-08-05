@@ -1,0 +1,19 @@
+library ioman
+version 1.1
+export 4 io_open
+export 5 io_close
+export 6 io_read
+export 7 io_write
+export 8 io_lseek
+export 9 io_ioctl
+export 10 io_remove
+export 11 io_mkdir
+export 12 io_rmdir
+export 13 io_dopen
+export 14 io_dclose
+export 15 io_dread
+export 16 io_getstat
+export 17 io_chstat
+export 18 io_format
+export 20 io_AddDrv
+export 21 io_DelDrv

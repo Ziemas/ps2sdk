@@ -1,0 +1,31 @@
+library iomanx
+version 1.1
+export 3 GetDeviceList
+export 4 open
+export 5 close
+export 6 read
+export 7 write
+export 8 lseek
+export 9 ioctl
+export 10 remove
+export 11 mkdir
+export 12 rmdir
+export 13 dopen
+export 14 dclose
+export 15 dread
+export 16 getstat
+export 17 chstat
+export 18 format
+export 25 rename
+export 26 chdir
+export 27 sync
+export 28 mount
+export 29 umount
+export 30 lseek64
+export 31 devctl
+export 32 symlink
+export 33 readlink
+export 34 ioctl2
+export 20 AddDrv
+export 21 DelDrv
+export 23 StdioInit

@@ -131,37 +131,4 @@ int DelDrv(const char *name);
 
 void StdioInit(int mode);
 
-#define iomanX_IMPORTS_start DECLARE_IMPORT_TABLE(iomanx, 1, 1)
-#define iomanX_IMPORTS_end END_IMPORT_TABLE
-
-#define I_GetDeviceList DECLARE_IMPORT(3, GetDeviceList)
-#define I_open DECLARE_IMPORT(4, open)
-#define I_close DECLARE_IMPORT(5, close)
-#define I_read DECLARE_IMPORT(6, read)
-#define I_write DECLARE_IMPORT(7, write)
-#define I_lseek DECLARE_IMPORT(8, lseek)
-#define I_ioctl DECLARE_IMPORT(9, ioctl)
-#define I_remove DECLARE_IMPORT(10, remove)
-#define I_mkdir DECLARE_IMPORT(11, mkdir)
-#define I_rmdir DECLARE_IMPORT(12, rmdir)
-#define I_dopen DECLARE_IMPORT(13, dopen)
-#define I_dclose DECLARE_IMPORT(14, dclose)
-#define I_dread DECLARE_IMPORT(15, dread)
-#define I_getstat DECLARE_IMPORT(16, getstat)
-#define I_chstat DECLARE_IMPORT(17, chstat)
-#define I_format DECLARE_IMPORT(18, format)
-#define I_rename DECLARE_IMPORT(25, rename)
-#define I_chdir DECLARE_IMPORT(26, chdir)
-#define I_sync DECLARE_IMPORT(27, sync)
-#define I_mount DECLARE_IMPORT(28, mount)
-#define I_umount DECLARE_IMPORT(29, umount)
-#define I_lseek64 DECLARE_IMPORT(30, lseek64)
-#define I_devctl DECLARE_IMPORT(31, devctl)
-#define I_symlink DECLARE_IMPORT(32, symlink)
-#define I_readlink DECLARE_IMPORT(33, readlink)
-#define I_ioctl2 DECLARE_IMPORT(34, ioctl2)
-#define I_AddDrv DECLARE_IMPORT(20, AddDrv);
-#define I_DelDrv DECLARE_IMPORT(21, DelDrv);
-#define I_StdioInit DECLARE_IMPORT(23, StdioInit);
-
 #endif /* __IOMANX_H__ */
