@@ -80,7 +80,7 @@ IOP_C_COMPILE = $(IOP_CC) $(IOP_CFLAGS)
 # Command for ensuring the output directory for the rule exists.
 DIR_GUARD = @$(MKDIR) -p $(@D)
 
-.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.S
+.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.S $(IOP_OBJS_DIR)imports.o
 
 $(IOP_OBJS_DIR)%.o: $(IOP_SRC_DIR)%.c
 	$(DIR_GUARD)
