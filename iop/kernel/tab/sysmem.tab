@@ -1,0 +1,11 @@
+library sysmem
+version 1.1
+export 4 AllocSysMemory
+export 5 FreeSysMemory
+export 6 QueryMemSize
+export 7 QueryMaxFreeMemSize
+export 8 QueryTotalFreeMemSize
+export 9 QueryBlockTopAddress
+export 10 QueryBlockSize
+export 14 Kprintf
+export 15 KprintfSet
