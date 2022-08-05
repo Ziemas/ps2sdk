@@ -83,6 +83,8 @@ IOP_C_COMPILE = $(IOP_CC) $(IOP_CFLAGS)
 # Command for ensuring the output directory for the rule exists.
 DIR_GUARD = @$(MKDIR) -p $(@D)
 
+.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.S $(IOP_OBJS_DIR)imports.o
+
 $(IOP_OBJS_DIR)%.o: $(IOP_SRC_DIR)%.c
 	$(DIR_GUARD)
 	$(IOP_C_COMPILE) -c $< -o $@
@@ -95,34 +97,24 @@ $(IOP_OBJS_DIR)%.o: $(IOP_SRC_DIR)%.s
 	$(DIR_GUARD)
 	$(IOP_AS) $(IOP_ASFLAGS) $< -o $@
 
-.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.c $(IOP_OBJS_DIR)build-exports.c
-
 $(PS2SDKSRC)/tools/elftypechanger/bin/elftypechanger: $(PS2SDKSRC)/tools/elftypechanger
 	$(MAKEREC) $<
 
-# Rules to build imports.lst.
-$(IOP_OBJS_DIR)build-imports.c: $(IOP_SRC_DIR)imports.lst
+$(IOP_OBJS_DIR)%.S: $(IOP_SRC_DIR)%.tab
 	$(DIR_GUARD)
-	$(ECHO) "#include \"irx_imports.h\"" > $@
-	cat $< >> $@
+	$(IOP_LIBGEN) -s $@ $<
 
-$(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.c
+$(IOP_OBJS_DIR)build-imports.S:
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) $(IOP_IETABLE_CFLAGS) -c $< -o $@
+	$(IOP_LIBLD) -s $@ -i $(IOP_OBJS) -l $(IOP_ILBS) -n $(IOP_NM)
 
-# Rules to build exports.tab.
-$(IOP_OBJS_DIR)build-exports.c: $(IOP_SRC_DIR)exports.tab
+$(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.S
 	$(DIR_GUARD)
-	$(ECHO) "#include \"irx.h\"" > $@
-	cat $< >> $@
+	$(IOP_C_COMPILE) $(IOP_CFLAGS) -c $< -o $@
 
-$(IOP_OBJS_DIR)exports.o: $(IOP_OBJS_DIR)build-exports.c
+$(IOP_BIN_ELF): $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) $(IOP_IETABLE_CFLAGS) -c $< -o $@
-
-$(IOP_BIN_ELF): $(IOP_OBJS)
-	$(DIR_GUARD)
-	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_LDFLAGS) $(IOP_LIBS)
+	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o $(IOP_LDFLAGS) $(IOP_LIBS)
 
 $(IOP_BIN): $(IOP_BIN_ELF) $(PS2SDKSRC)/tools/elftypechanger/bin/elftypechanger
 	$(PS2SDKSRC)/tools/elftypechanger/bin/elftypechanger $< $@ FF80
