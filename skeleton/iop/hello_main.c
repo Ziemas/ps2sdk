@@ -1,15 +1,13 @@
-// This include will allow us to avoid reincluding other headers
-#include "irx_imports.h"
+#include "hello.h"
+
+#include <irx.h>
+#include <loadcore.h>
+#include <stdio.h>
 
 #define MODNAME "hello"
 IRX_ID("IOP skeleton", 1, 1);
 
 extern struct irx_export_table _exp_hello;
-
-
-// This contain our prototype for our export, and we need it to call it inside our _start
-#include "hello.h"
-
 
 // This is a bit like a "main" for IRX files.
 int _start(int argc, char *argv[])

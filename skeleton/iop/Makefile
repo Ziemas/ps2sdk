@@ -1,6 +1,7 @@
 IOP_BIN = hello.irx
+IOP_ILBS = $(PS2SDK)/iop/tab/stdio.tab $(PS2SDK)/iop/tab/loadcore.tab
 
-IOP_OBJS = hello_main.o hello_exports.o imports.o exports.o
+IOP_OBJS = hello_main.o hello_exports.o hello_lib.o
 
 all: $(IOP_BIN)
 

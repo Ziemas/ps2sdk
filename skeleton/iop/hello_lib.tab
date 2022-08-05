@@ -1,0 +1,6 @@
+library hello
+version 0.1
+export 1 _start
+export 2 -
+export 3 -
+export 4 -
