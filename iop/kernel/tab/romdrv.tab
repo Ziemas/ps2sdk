@@ -1,0 +1,4 @@
+library romdrv
+version 2.1
+export 4 romdrv_mount
+export 5 romdrv_unmount

@@ -22,10 +22,4 @@
 extern int romdrv_mount(int unit, void *start);
 extern int romdrv_unmount(int unit);
 
-#define romdrv_IMPORTS_start DECLARE_IMPORT_TABLE(romdrv, 2, 1)
-#define romdrv_IMPORTS_end END_IMPORT_TABLE
-
-#define I_romdrv_mount DECLARE_IMPORT(4, romdrv_mount)
-#define I_romdrv_unmount DECLARE_IMPORT(5, romdrv_unmount)
-
 #endif /* __ROMDRV_H__ */
