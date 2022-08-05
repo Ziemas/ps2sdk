@@ -1,0 +1,17 @@
+library padman
+version 1.2
+export 4 padInit
+export 5 padEnd
+export 6 padPortOpen
+export 7 padPortClose
+export 8 padGetInBuffer
+export 9 padSetupEEButtonData
+export 10 padGetModeConfig
+export 11 padInfoAct
+export 12 padInfoComb
+export 13 padInfoMode
+export 14 padSetMainMode
+export 15 padSetActDirect
+export 16 padSetActAlign
+export 17 padGetButtonMask
+export 18 padGetButtonInfo
