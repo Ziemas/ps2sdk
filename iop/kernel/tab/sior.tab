@@ -1,0 +1,14 @@
+library sior
+version 1.1
+export 4 sio_init
+export 5 sio_putc
+export 6 sio_getc
+export 7 sio_getc_block
+export 8 sio_write
+export 9 sio_read
+export 10 sio_puts
+export 11 sio_putsn
+export 12 sio_gets
+export 13 sio_flush
+export 14 sio_printf
+export 15 sio_vprintf
