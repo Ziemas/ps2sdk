@@ -1,0 +1,6 @@
+library mtapman
+version 1.1
+export 4 mtapPortOpen
+export 5 mtapPortClose
+export 6 mtapPortGetSlotNumber
+export 7 mtapChangeSlot
