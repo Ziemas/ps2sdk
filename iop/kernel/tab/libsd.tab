@@ -1,0 +1,33 @@
+library libsd
+version 1.4
+export 2 sceSdQuit
+export 4 sceSdInit
+export 5 sceSdSetParam
+export 6 sceSdGetParam
+export 9 sceSdSetAddr
+export 7 sceSdSetSwitch
+export 8 sceSdGetSwitch
+export 10 sceSdGetAddr
+export 11 sceSdSetCoreAttr
+export 12 sceSdGetCoreAttr
+export 13 sceSdNote2Pitch
+export 14 sceSdPitch2Note
+export 15 sceSdProcBatch
+export 16 sceSdProcBatchEx
+export 17 sceSdVoiceTrans
+export 18 sceSdBlockTrans
+export 19 sceSdVoiceTransStatus
+export 20 sceSdBlockTransStatus
+export 21 sceSdSetTransCallback
+export 22 sceSdSetIRQCallback
+export 23 sceSdSetEffectAttr
+export 24 sceSdGetEffectAttr
+export 25 sceSdClearEffectWorkArea
+export 26 sceSdSetTransIntrHandler
+export 27 sceSdSetSpu2IntrHandler
+export 28 sceSdGetTransIntrHandlerArgument
+export 29 sceSdGetSpu2IntrHandlerArgument
+export 30 sceSdStopTrans
+export 31 sceSdCleanEffectWorkArea
+export 32 sceSdSetEffectMode
+export 33 sceSdSetEffectModeParams
