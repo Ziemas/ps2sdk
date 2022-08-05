@@ -1,0 +1,13 @@
+library stdio
+version 1.2
+export 4 printf
+export 5 getchar
+export 6 putchar
+export 7 puts
+export 8 gets
+export 9 fdprintf
+export 10 fdgetc
+export 11 fdputc
+export 12 fdputs
+export 13 fdgets
+export 14 vfdprintf
