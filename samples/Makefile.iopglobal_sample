@@ -47,7 +47,6 @@ IOP_LDFLAGS := -Wl,--gpsize=0 -Wl,-G0 -Wl,--nmagic -Wl,--orphan-handling=error -
 ifneq ($(IOP_CC_VERSION),3.2.2)
 ifneq ($(IOP_CC_VERSION),3.2.3)
 IOP_CFLAGS += -msoft-float -mno-explicit-relocs
-IOP_IETABLE_CFLAGS := -fno-toplevel-reorder
 endif
 endif
 
@@ -93,26 +92,23 @@ $(IOP_OBJS_DIR)%.o: $(IOP_SRC_DIR)%.s
 	$(DIR_GUARD)
 	$(IOP_AS) $(IOP_ASFLAGS) $< -o $@
 
-.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.c $(IOP_OBJS_DIR)build-exports.c
+.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.S $(IOP_OBJS_DIR)build-exports.S
 
-# Rules to build imports.lst.
-$(IOP_OBJS_DIR)build-imports.c: $(IOP_SRC_DIR)imports.lst
+$(IOP_OBJS_DIR)build-exports.S: $(IOP_SRC_DIR)exports.tab
 	$(DIR_GUARD)
-	$(ECHO) "#include \"irx_imports.h\"" > $@
-	cat $< >> $@
+	$(IOP_LIBGEN) -s $@ $<
 
-$(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.c
+$(IOP_OBJS_DIR)exports.o: $(IOP_OBJS_DIR)build-exports.S
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) $(IOP_IETABLE_CFLAGS) -c $< -o $@
+	$(IOP_C_COMPILE) $(IOP_CFLAGS) -c $< -o $@
 
-# Rules to build exports.tab.
-$(IOP_OBJS_DIR)build-exports.c: $(IOP_SRC_DIR)exports.tab
-	$(ECHO) "#include \"irx.h\"" > $@
-	cat $< >> $@
-
-$(IOP_OBJS_DIR)exports.o: $(IOP_OBJS_DIR)build-exports.c
+$(IOP_OBJS_DIR)build-imports.S:
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) $(IOP_IETABLE_CFLAGS) -c $< -o $@
+	$(IOP_LIBLD) -s $@ -i $(IOP_OBJS) -l $(IOP_ILBS)
+
+$(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.S
+	$(DIR_GUARD)
+	$(IOP_C_COMPILE) $(IOP_CFLAGS) -c $< -o $@
 
 $(IOP_BIN_ELF): $(IOP_OBJS)
 	$(DIR_GUARD)

@@ -38,6 +38,8 @@ IOP_OBJCOPY = $(IOP_TOOL_PREFIX)objcopy
 IOP_STRIP = $(IOP_TOOL_PREFIX)strip
 IOP_ADDR2LINE = $(IOP_TOOL_PREFIX)addr2line
 IOP_RANLIB = $(IOP_TOOL_PREFIX)ranlib
+IOP_LIBGEN = libgen
+IOP_LIBLD = libld
 
 #
 # Definitions for the local toolchain

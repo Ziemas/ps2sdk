@@ -13,6 +13,7 @@ SUBDIRS = \
 	bin2s \
 	elftypechanger \
 	libgen \
+	libld \
 	ps2adpcm \
 #	  gensymtab
 
