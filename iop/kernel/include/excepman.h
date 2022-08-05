@@ -71,14 +71,4 @@ int RegisterDefaultExceptionHandler(exception_handler_t);
 int ReleaseExceptionHandler(int exception, exception_handler_t);
 int ReleaseDefaultExceptionHandler(exception_handler_t);
 
-#define excepman_IMPORTS_start DECLARE_IMPORT_TABLE(excepman, 1, 2)
-#define excepman_IMPORTS_end END_IMPORT_TABLE
-
-#define I_GetExHandlersTable DECLARE_IMPORT(3, GetExHandlersTable)
-#define I_RegisterExceptionHandler DECLARE_IMPORT(4, RegisterExceptionHandler)
-#define I_RegisterPriorityExceptionHandler DECLARE_IMPORT(5, RegisterPriorityExceptionHandler)
-#define I_RegisterDefaultExceptionHandler DECLARE_IMPORT(6, RegisterDefaultExceptionHandler)
-#define I_ReleaseExceptionHandler DECLARE_IMPORT(7, ReleaseExceptionHandler)
-#define I_ReleaseDefaultExceptionHandler DECLARE_IMPORT(8, ReleaseDefaultExceptionHandler)
-
 #endif /* __EXCEPMAN_H__ */

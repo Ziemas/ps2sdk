@@ -1,0 +1,8 @@
+library excepman
+version 1.2
+export 3 GetExHandlersTable
+export 4 RegisterExceptionHandler
+export 5 RegisterPriorityExceptionHandler
+export 6 RegisterDefaultExceptionHandler
+export 7 ReleaseExceptionHandler
+export 8 ReleaseDefaultExceptionHandler
