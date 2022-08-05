@@ -1,0 +1,28 @@
+library sifcmd
+version 1.1
+export 4 sceSifInitCmd
+export 5 sceSifExitCmd
+export 6 sceSifGetSreg
+export 7 sceSifSetSreg
+export 8 sceSifSetCmdBuffer
+export 9 sceSifSetSysCmdBuffer
+export 10 sceSifAddCmdHandler
+export 11 sceSifRemoveCmdHandler
+export 12 sceSifSendCmd
+export 13 isceSifSendCmd
+export 14 sceSifInitRpc
+export 15 sceSifBindRpc
+export 16 sceSifCallRpc
+export 17 sceSifRegisterRpc
+export 18 sceSifCheckStatRpc
+export 19 sceSifSetRpcQueue
+export 20 sceSifGetNextRequest
+export 21 sceSifExecRequest
+export 22 sceSifRpcLoop
+export 23 sceSifGetOtherData
+export 24 sceSifRemoveRpc
+export 25 sceSifRemoveRpcQueue
+export 26 sceSifSetSif1CB
+export 27 sceSifClearSif1CB
+export 28 sceSifSendCmdIntr
+export 29 isceSifSendCmdIntr

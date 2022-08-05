@@ -1,0 +1,18 @@
+library secrman
+version 1.3
+export 4 SecrSetMcCommandHandler
+export 5 SecrSetMcDevIDHandler
+export 6 SecrAuthCard
+export 7 SecrResetAuthCard
+export 8 SecrCardBootHeader
+export 9 SecrCardBootBlock
+export 10 SecrCardBootFile
+export 11 SecrDiskBootHeader
+export 12 SecrDiskBootBlock
+export 13 SecrDiskBootFile
+export 14 SecrDownloadHeader
+export 15 SecrDownloadBlock
+export 16 SecrDownloadFile
+export 17 SecrDownloadGetKbit
+export 18 SecrDownloadGetKc
+export 19 SecrDownloadGetICVPS2
