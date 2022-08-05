@@ -1,0 +1,8 @@
+library vblank
+version 1.1
+export 4 WaitVblankStart
+export 5 WaitVblankEnd
+export 6 WaitVblank
+export 7 WaitNonVblank
+export 8 RegisterVblankHandler
+export 9 ReleaseVblankHandler
