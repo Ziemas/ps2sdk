@@ -22,6 +22,7 @@ struct function_entry
 {
     std::string name {};
     std::string name_internal {};
+    int index;
 };
 
 struct module_data
@@ -61,7 +62,7 @@ static module_data parse_table(char *filename)
             continue;
         }
 
-        if ((elements[0].find("Library")) != std::string::npos) {
+        if ((elements[0].find("library")) != std::string::npos) {
             data.libname = elements[1];
             if (elements.size() > 2) {
                 data.libname_internal = elements[1];
@@ -70,13 +71,23 @@ static module_data parse_table(char *filename)
             }
         }
 
-        if ((elements[0].find("Version")) != std::string::npos) {
-            data.version = atoi(elements[1].c_str());
+        if ((elements[0].find("version")) != std::string::npos) {
+            auto pos = elements[1].find('.');
+            if (pos != std::string::npos) {
+                auto first = elements[1].substr(0, pos);
+                auto second = elements[1].substr(pos);
+                data.version |= atoi(first.c_str()) << 8;
+                data.version |= atoi(second.c_str() + 1);
+            } else {
+                data.version = atoi(elements[1].c_str());
+            }
         }
 
-        if ((elements[0].find("Entry")) != std::string::npos) {
+        if ((elements[0].find("export")) != std::string::npos) {
             function_entry ent;
-            ent.name = elements[1];
+
+            ent.index = atoi(elements[1].c_str());
+            ent.name = elements[2];
 
             if (ent.name == "-") {
                 ent.name = "";

@@ -76,12 +76,19 @@ static module_entry parse_ilb(std::fstream &in)
     auto line  = read_and_split(in);
     entry.name = line.at(1);
     line       = read_and_split(in);
-    std::sscanf(line.at(1).c_str(), "0x%04x", &entry.version);
-    line       = read_and_split(in);
-    std::sscanf(line.at(1).c_str(), "0x%04x", &entry.version);
+
+    auto pos   = line[1].find('.');
+    if (pos != std::string::npos) {
+        auto first  = line[1].substr(0, pos);
+        auto second = line[1].substr(pos);
+        entry.version |= atoi(first.c_str()) << 8;
+        entry.version |= atoi(second.c_str() + 1);
+    } else {
+        entry.version = atoi(line[1].c_str());
+    }
 
     line = read_and_split(in);
-    while (in.good() && line.at(0) == "E") {
+    while (in.good() && line.at(0) == "export") {
         symbol_entry sym;
         sym.index = std::atoi(line.at(1).c_str());
         sym.name  = line.at(2);
@@ -97,8 +104,6 @@ static std::vector<module_entry> read_ilbs(std::vector<std::string> &files)
     std::vector<module_entry> modules;
     for (auto &f : files) {
         std::fstream file(f, std::fstream::in);
-        std::string header;
-        std::getline(file, header);
         while (file.good()) {
             modules.push_back(parse_ilb(file));
         }
