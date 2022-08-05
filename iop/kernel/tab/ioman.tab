@@ -1,0 +1,19 @@
+library ioman
+version 1.1
+export 4 open
+export 5 close
+export 6 read
+export 7 write
+export 8 lseek
+export 9 ioctl
+export 10 remove
+export 11 mkdir
+export 12 rmdir
+export 13 dopen
+export 14 dclose
+export 15 dread
+export 16 getstat
+export 17 chstat
+export 18 format
+export 20 AddDrv
+export 21 DelDrv
