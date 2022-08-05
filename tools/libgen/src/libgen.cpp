@@ -28,11 +28,12 @@ struct module_data
 {
     std::string libname {};
     std::string libname_internal {};
+    int version;
 
     std::vector<function_entry> function_entries {};
 };
 
-std::vector<std::string> split(const std::string &s)
+static std::vector<std::string> split(const std::string &s)
 {
     std::vector<std::string> elements;
     std::istringstream iss(s);
@@ -60,13 +61,17 @@ static module_data parse_table(char *filename)
             continue;
         }
 
-        if ((elements[0].find("Libname")) != std::string::npos) {
+        if ((elements[0].find("Library")) != std::string::npos) {
             data.libname = elements[1];
             if (elements.size() > 2) {
                 data.libname_internal = elements[1];
             } else {
-                data.libname_internal = elements[1] + "_entry";
+                data.libname_internal = "_exp_" + elements[1];
             }
+        }
+
+        if ((elements[0].find("Version")) != std::string::npos) {
+            data.version = atoi(elements[1].c_str());
         }
 
         if ((elements[0].find("Entry")) != std::string::npos) {
@@ -93,14 +98,13 @@ static module_data parse_table(char *filename)
 static void write_iop_source(module_data &data, char *filename)
 {
     FILE *fp = fopen(filename, "w");
-    fprintf(fp, ".text\n");
+    fprintf(fp, ".section .module.exports,\"aw\",@progbits\n");
     fprintf(fp, ".set noreorder\n");
     fprintf(fp, ".globl %s\n", data.libname_internal.c_str());
     fprintf(fp, "%s:\n", data.libname_internal.c_str());
     fprintf(fp, ".word 0x41c00000\n");
     fprintf(fp, ".word 0x0\n");
-    fprintf(fp, ".short 0\n"); // would be version
-    fprintf(fp, ".short 0\n"); // would be flags
+    fprintf(fp, ".word 0x%08x\n", data.version);
     fprintf(fp, ".ascii \"%s", data.libname.c_str());
     for (size_t i = 0; i < (IRX_MAX_NAME - data.libname.length()); i++) {
         fprintf(fp, "\\0");
@@ -122,11 +126,12 @@ static void write_iop_source(module_data &data, char *filename)
         }
         index++;
     }
-    fprintf(fp, "\n\t.word\t0\t\n"); // 0 to signify end of table
+    fprintf(fp, ".word 0\n"); // 0 to signify end of table
+    fprintf(fp, "\n");
 
     if (retonly_needed) {
         fprintf(fp, "_retonly:\n");
-        fprintf(fp, "\tj\t$31\n");
+        fprintf(fp, "  j\t$31\n");
         fprintf(fp, "\tnop\n");
         fprintf(fp, "\n");
     }
