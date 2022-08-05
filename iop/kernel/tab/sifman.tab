@@ -1,0 +1,31 @@
+library sifman
+version 1.1
+export 4 sceSifDma2Init
+export 5 sceSifInit
+export 6 sceSifSetDChain
+export 7 sceSifSetDma
+export 8 sceSifDmaStat
+export 9 sceSifSetOneDma
+export 10 sceSifSendSync
+export 11 sceSifIsSending
+export 12 sceSifDma0Transfer
+export 13 sceSifDma0Sync
+export 14 sceSifDma0Sending
+export 15 sceSifDma1Transfer
+export 16 sceSifDma1Sync
+export 17 sceSifDma1Sending
+export 18 sceSifDma2Transfer
+export 19 sceSifDma2Sync
+export 20 sceSifDma2Sending
+export 21 sceSifGetMSFlag
+export 22 sceSifSetMSFlag
+export 23 sceSifGetSMFlag
+export 24 sceSifSetSMFlag
+export 25 sceSifGetMainAddr
+export 26 sceSifGetSubAddr
+export 27 sceSifSetSubAddr
+export 28 sceSifIntrMain
+export 29 sceSifCheckInit
+export 30 sceSifSetDmaIntrHandler
+export 31 sceSifResetDmaIntrHandler
+export 32 sceSifSetDmaIntr
