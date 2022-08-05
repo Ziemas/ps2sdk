@@ -1,0 +1,28 @@
+library modload
+version 1.1
+export 3 GetModloadInternalData
+export 4 ReBootStart
+export 5 LoadModuleAddress
+export 6 LoadModule
+export 7 LoadStartModule
+export 8 StartModule
+export 9 LoadModuleBufferAddress
+export 10 LoadModuleBuffer
+export 11 LoadStartKelfModule
+export 12 SetSecrmanCallbacks
+export 13 SetCheckKelfPathCallback
+export 14 GetLoadfileCallbacks
+export 15 IsIllegalBootDevice
+export 16 GetModuleIdList
+export 17 ReferModuleStatus
+export 18 GetModuleIdListByName
+export 19 LoadModuleWithOption
+export 20 StopModule
+export 21 UnloadModule
+export 22 SearchModuleByName
+export 23 SearchModuleByAddress
+export 24 SelfStopModule
+export 25 SelfUnloadModule
+export 26 AllocLoadMemory
+export 27 FreeLoadMemory
+export 28 SetModuleFlags

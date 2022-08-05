@@ -34,21 +34,4 @@ void SetCheckKelfPathCallback(void *CheckKelfPath_fnc);
 void GetLoadfileCallbacks(void **CheckKelfPath_fnc, void **SetLoadfileCallbacks_fnc);
 int IsIllegalBootDevice(const char *path);
 
-#define modload_IMPORTS_start DECLARE_IMPORT_TABLE(modload, 1, 1)
-#define modload_IMPORTS_end END_IMPORT_TABLE
-
-#define I_GetModloadInternalData DECLARE_IMPORT(3, GetModloadInternalData);
-#define I_ReBootStart DECLARE_IMPORT(4, ReBootStart)
-#define I_LoadModuleAddress DECLARE_IMPORT(5, LoadModuleAddress)
-#define I_LoadModule DECLARE_IMPORT(6, LoadModule)
-#define I_LoadStartModule DECLARE_IMPORT(7, LoadStartModule)
-#define I_StartModule DECLARE_IMPORT(8, StartModule)
-#define I_LoadModuleBufferAddress DECLARE_IMPORT(9, LoadModuleBufferAddress)
-#define I_LoadModuleBuffer DECLARE_IMPORT(10, LoadModuleBuffer)
-#define I_LoadStartKelfModule DECLARE_IMPORT(11, LoadStartKelfModule)
-#define I_SetSecrmanCallbacks DECLARE_IMPORT(12, SetSecrmanCallbacks)
-#define I_SetCheckKelfPathCallback DECLARE_IMPORT(13, SetCheckKelfPathCallback)
-#define I_GetLoadfileCallbacks DECLARE_IMPORT(14, GetLoadfileCallbacks)
-#define I_IsIllegalBootDevice DECLARE_IMPORT(15, IsIllegalBootDevice)
-
 #endif /* __MODLOAD_H__ */
