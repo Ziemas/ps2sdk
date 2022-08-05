@@ -1,0 +1,16 @@
+library intrman
+version 1.2
+export 4 RegisterIntrHandler
+export 5 ReleaseIntrHandler
+export 6 EnableIntr
+export 7 DisableIntr
+export 8 CpuDisableIntr
+export 9 CpuEnableIntr
+export 14 CpuInvokeInKmode
+export 15 DisableDispatchIntr
+export 16 EnableDispatchIntr
+export 17 CpuSuspendIntr
+export 18 CpuResumeIntr
+export 23 QueryIntrContext
+export 24 QueryIntrStack
+export 25 iCatchMultiIntr
