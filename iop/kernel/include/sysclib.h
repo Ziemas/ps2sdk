@@ -150,47 +150,4 @@ char *strtok_r(char *s, const char *delim, char **lasts);
 #endif
 #endif
 
-#define sysclib_IMPORTS_start DECLARE_IMPORT_TABLE(sysclib, 1, 1)
-#define sysclib_IMPORTS_end END_IMPORT_TABLE
-
-#define I_setjmp DECLARE_IMPORT(4, setjmp)
-#define I_longjmp DECLARE_IMPORT(5, longjmp)
-#define I_toupper DECLARE_IMPORT(6, _toupper)
-#define I_tolower DECLARE_IMPORT(7, _tolower)
-#define I_look_ctype_table DECLARE_IMPORT(8, look_ctype_table)
-#define I_get_ctype_table DECLARE_IMPORT(9, get_ctype_table)
-#define I_memchr DECLARE_IMPORT(10, memchr)
-#define I_memcmp DECLARE_IMPORT(11, memcmp)
-#define I_memcpy DECLARE_IMPORT(12, memcpy)
-#define I_memmove DECLARE_IMPORT(13, memmove)
-#define I_memset DECLARE_IMPORT(14, memset)
-#define I_bcmp DECLARE_IMPORT(15, bcmp);
-#define I_bcopy DECLARE_IMPORT(16, bcopy);
-#define I_bzero DECLARE_IMPORT(17, bzero);
-#define I_prnt DECLARE_IMPORT(18, prnt)
-#define I_sprintf DECLARE_IMPORT(19, sprintf)
-#define I_strcat DECLARE_IMPORT(20, strcat)
-#define I_strchr DECLARE_IMPORT(21, strchr)
-#define I_strcmp DECLARE_IMPORT(22, strcmp)
-#define I_strcpy DECLARE_IMPORT(23, strcpy)
-#define I_strcspn DECLARE_IMPORT(24, strcspn)
-#define I_index DECLARE_IMPORT(25, index)
-#define I_rindex DECLARE_IMPORT(26, rindex)
-#define I_strlen DECLARE_IMPORT(27, strlen)
-#define I_strncat DECLARE_IMPORT(28, strncat)
-#define I_strncmp DECLARE_IMPORT(29, strncmp)
-#define I_strncpy DECLARE_IMPORT(30, strncpy)
-#define I_strpbrk DECLARE_IMPORT(31, strpbrk)
-#define I_strrchr DECLARE_IMPORT(32, strrchr)
-#define I_strspn DECLARE_IMPORT(33, strspn)
-#define I_strstr DECLARE_IMPORT(34, strstr)
-#define I_strtok DECLARE_IMPORT(35, strtok)
-#define I_strtol DECLARE_IMPORT(36, strtol)
-#define I_atob DECLARE_IMPORT(37, atob)
-#define I_strtoul DECLARE_IMPORT(38, strtoul)
-#define I_wmemcopy DECLARE_IMPORT(40, _wmemcopy)
-#define I_wmemset DECLARE_IMPORT(41, _wmemset)
-#define I_vsprintf DECLARE_IMPORT(42, vsprintf)
-#define I_strtok_r DECLARE_IMPORT(43, strtok_r)
-
 #endif /* __SYSCLIB_H__ */
