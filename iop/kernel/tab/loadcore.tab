@@ -1,0 +1,25 @@
+library loadcore
+version 1.1
+export 3 GetLoadcoreInternalData
+export 4 FlushIcache
+export 5 FlushDcache
+export 6 RegisterLibraryEntries
+export 7 ReleaseLibraryEntries
+export 8 LinkImports
+export 9 UnlinkImports
+export 10 RegisterNonAutoLinkEntries
+export 11 QueryLibraryEntryTable
+export 12 QueryBootMode
+export 13 RegisterBootMode
+export 14 SetNonAutoLinkFlag
+export 15 UnsetNonAutoLinkFlag
+export 16 LinkModule
+export 17 UnlinkModule
+export 20 RegisterPostBootCallback
+export 21 SetCacheCtrl
+export 22 ReadModuleHeader
+export 23 LoadModuleImage
+export 24 FindImageInfo
+export 25 ApplyElfRelSection
+export 26 InitLoadedModInfo
+export 27 SetRebootTimeLibraryHandlingMode

@@ -94,18 +94,6 @@ typedef struct{	//FIXME: Incomplete structure definition. Provided only for comp
 
 typedef int (*BootupCallback_t)(iop_init_entry_t* next, int delayed);
 
-/** 
- * For backward-compatibility with older projects. Read the comment on GetLibraryEntryTable(). This structure is incomplete. 
- */
-typedef struct {
-	struct	_iop_library *tail;
-	struct	_iop_library *head;
-} iop_library_table_t __attribute__ ((deprecated));
-
-/**
- * Retained for backward-compatibility with older projects. This function actually returns a pointer to LOADCORE's internal data structure.
- */
-iop_library_table_t *GetLibraryEntryTable(void) __attribute__ ((deprecated));
 lc_internals_t *GetLoadcoreInternalData(void);
 
 void FlushIcache(void);
@@ -136,46 +124,5 @@ void SetCacheCtrl(u32 val);
 int ReadModuleHeader(void* image, FileInfo_t *result);
 int LoadModuleImage(void* image, FileInfo_t *fi);
 ModuleInfo_t *FindImageInfo(void* addr);
-
-#define loadcore_IMPORTS \
-	loadcore_IMPORTS_start \
- \
- 	I_GetLibraryEntryTable \
- \
- 	I_FlushIcache \
-	I_FlushDcache \
- \
- 	I_RegisterLibraryEntries \
-	I_ReleaseLibraryEntries \
- \
- 	I_QueryLibraryEntryTable \
-	I_QueryBootMode \
- \
-	loadcore_IMPORTS_end
-
-#define loadcore_IMPORTS_start DECLARE_IMPORT_TABLE(loadcore, 1, 1)
-#define loadcore_IMPORTS_end END_IMPORT_TABLE
-
-#define I_GetLibraryEntryTable DECLARE_IMPORT(3, GetLibraryEntryTable)
-#define I_GetLoadcoreInternalData DECLARE_IMPORT(3, GetLoadcoreInternalData)
-#define I_FlushIcache DECLARE_IMPORT(4, FlushIcache)
-#define I_FlushDcache DECLARE_IMPORT(5, FlushDcache)
-#define I_RegisterLibraryEntries DECLARE_IMPORT(6, RegisterLibraryEntries)
-#define I_ReleaseLibraryEntries DECLARE_IMPORT(7, ReleaseLibraryEntries)
-#define I_LinkImports DECLARE_IMPORT(8, LinkImports)
-#define I_UnlinkImports DECLARE_IMPORT(9, UnlinkImports)
-#define I_RegisterNonAutoLinkEntries DECLARE_IMPORT(10, RegisterNonAutoLinkEntries)
-#define I_QueryLibraryEntryTable DECLARE_IMPORT(11, QueryLibraryEntryTable)
-#define I_QueryBootMode DECLARE_IMPORT(12, QueryBootMode)
-#define I_RegisterBootMode DECLARE_IMPORT(13, RegisterBootMode)
-#define I_SetNonAutoLinkFlag DECLARE_IMPORT(14, SetNonAutoLinkFlag)
-#define I_UnsetNonAutoLinkFlag DECLARE_IMPORT(15, UnsetNonAutoLinkFlag)
-#define I_LinkModule DECLARE_IMPORT(16, LinkModule)
-#define I_UnlinkModule DECLARE_IMPORT(17, UnlinkModule)
-#define I_RegisterPostBootCallback DECLARE_IMPORT(20, RegisterPostBootCallback)
-#define I_SetCacheCtrl DECLARE_IMPORT(21, SetCacheCtrl)
-#define I_ReadModuleHeader DECLARE_IMPORT(22, ReadModuleHeader)
-#define I_LoadModuleImage DECLARE_IMPORT(23, LoadModuleImage)
-#define I_FindImageInfo DECLARE_IMPORT(24, FindImageInfo)
 
 #endif /* __LOADCORE_H__ */
