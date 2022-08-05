@@ -1,0 +1,12 @@
+library thevent
+version 1.1
+export 4 CreateEventFlag
+export 5 DeleteEventFlag
+export 6 SetEventFlag
+export 7 iSetEventFlag
+export 8 ClearEventFlag
+export 9 iClearEventFlag
+export 10 WaitEventFlag
+export 11 PollEventFlag
+export 13 ReferEventFlagStatus
+export 14 iReferEventFlagStatus
