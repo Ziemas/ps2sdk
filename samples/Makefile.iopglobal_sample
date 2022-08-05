@@ -80,6 +80,8 @@ IOP_C_COMPILE = $(IOP_CC) $(IOP_CFLAGS)
 # Command for ensuring the output directory for the rule exists.
 DIR_GUARD = @$(MKDIR) -p $(@D)
 
+.INTERMEDIATE: $(IOP_OBJS_DIR)build-imports.S
+
 $(IOP_OBJS_DIR)%.o: $(IOP_SRC_DIR)%.c
 	$(DIR_GUARD)
 	$(IOP_C_COMPILE) -c $< -o $@
@@ -112,9 +114,9 @@ $(IOP_OBJS_DIR)imports.o: $(IOP_OBJS_DIR)build-imports.S
 	$(DIR_GUARD)
 	$(IOP_C_COMPILE) $(IOP_CFLAGS) -c $< -o $@
 
-$(IOP_BIN_ELF): $(IOP_OBJS)
+$(IOP_BIN_ELF): $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o
 	$(DIR_GUARD)
-	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_LDFLAGS) $(IOP_LIBS) $(IOP_OBJS_DIR)imports.o
+	$(IOP_C_COMPILE) -T$(IOP_LINKFILE) $(IOP_OPTFLAGS) -o $@ $(IOP_OBJS) $(IOP_OBJS_DIR)imports.o $(IOP_LDFLAGS) $(IOP_LIBS)
 
 $(IOP_BIN): $(IOP_BIN_ELF)
 	$(DIR_GUARD)
