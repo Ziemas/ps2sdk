@@ -1,0 +1,9 @@
+library heaplib
+version 1.1
+export 4 CreateHeap
+export 5 DeleteHeap
+export 6 AllocHeapMemory
+export 7 FreeHeapMemory
+export 8 HeapTotalFreeSize
+export 11 HeapPrepare
+export 15 HeapChunkSize
