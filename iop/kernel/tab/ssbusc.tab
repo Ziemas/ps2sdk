@@ -1,0 +1,16 @@
+library ssbusc
+version 1.1
+export 4 SetDelay
+export 5 GetDelay
+export 6 SetBaseAddress
+export 7 GetBaseAddress
+export 8 SetRecoveryTime
+export 9 GetRecoveryTime
+export 10 SetHoldTime
+export 11 GetHoldTime
+export 12 SetFloatTime
+export 13 GetFloatTime
+export 14 SetStrobeTime
+export 15 GetStrobeTime
+export 16 SetCommonDelay
+export 17 GetCommonDelay

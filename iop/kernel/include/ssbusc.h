@@ -200,22 +200,4 @@ int GetStrobeTime(void);
 int SetCommonDelay(unsigned int value);
 int GetCommonDelay(void);
 
-#define ssbusc_IMPORTS_start DECLARE_IMPORT_TABLE(ssbusc, 1, 1)
-#define ssbusc_IMPORTS_end END_IMPORT_TABLE
-
-#define I_SetDelay DECLARE_IMPORT(4, SetDelay)
-#define I_GetDelay DECLARE_IMPORT(5, GetDelay)
-#define I_SetBaseAddress DECLARE_IMPORT(6, SetBaseAddress)
-#define I_GetBaseAddress DECLARE_IMPORT(7, GetBaseAddress)
-#define I_SetRecoveryTime DECLARE_IMPORT(8, SetRecoveryTime)
-#define I_GetRecoveryTime DECLARE_IMPORT(9, GetRecoveryTime)
-#define I_SetHoldTime DECLARE_IMPORT(10, SetHoldTime)
-#define I_GetHoldTime DECLARE_IMPORT(11, GetHoldTime)
-#define I_SetFloatTime DECLARE_IMPORT(12, SetFloatTime)
-#define I_GetFloatTime DECLARE_IMPORT(13, GetFloatTime)
-#define I_SetStrobeTime DECLARE_IMPORT(14, SetStrobeTime)
-#define I_GetStrobeTime DECLARE_IMPORT(15, GetStrobeTime)
-#define I_SetCommonDelay DECLARE_IMPORT(16, SetCommonDelay)
-#define I_GetCommonDelay DECLARE_IMPORT(17, GetCommonDelay)
-
 #endif /* __SSBUSC_H__ */
