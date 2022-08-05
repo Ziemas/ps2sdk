@@ -1,0 +1,14 @@
+library sio2man
+version 1.1
+export 26 sio2_transfer_reset
+export 48 sio2_mtap_transfer_init
+export 49 sio2_transfer2
+export 50 sio2_transfer_reset2
+export 51 sio2_mtap_change_slot_set
+export 52 sio2_mtap_get_slot_max_set
+export 53 sio2_mtap_get_slot_max2_set
+export 54 sio2_mtap_update_slots_set
+export 55 sio2_mtap_change_slot
+export 56 sio2_mtap_get_slot_max
+export 57 sio2_mtap_get_slot_max2
+export 58 sio2_mtap_update_slots
