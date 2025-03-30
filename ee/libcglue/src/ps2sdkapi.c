@@ -15,6 +15,7 @@
  * fdman.c - Manager for fd.
  */
 
+#include <tty.h>
 #include <ps2sdkapi.h>
 #include <string.h>
 #include <stdio.h>
@@ -193,6 +194,17 @@ int __fioReadHelper(void *userdata, void *buf, int nbytes)
         return fd;
     }
 
+    if (fd == 0) {
+        if (ttyinit == 0) {
+            if (!sceTtyInit()) {
+                return -1;
+            }
+            ttyinit = 1;
+        }
+
+        return sceTtyRead(buf, nbytes);
+    }
+
     rv = fioRead(fd, buf, nbytes);
     return rv;
 }
@@ -229,6 +241,17 @@ int __fioWriteHelper(void *userdata, const void *buf, int nbytes)
     if (fd < 0)
     {
         return fd;
+    }
+
+    if (fd == 1 || fd == 2) {
+        if (ttyinit == 0) {
+            if (!sceTtyInit()) {
+                return -1;
+            }
+            ttyinit = 1;
+        }
+
+        return sceTtyWrite(buf, nbytes);
     }
 
     rv = fioWrite(fd, buf, nbytes);
