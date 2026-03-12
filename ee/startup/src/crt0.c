@@ -11,24 +11,24 @@
 #include <kernel.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <stdnoreturn.h>  // noreturn
+#include <stdnoreturn.h> // noreturn
 #include <string.h>
 #include <startup.h>
 
-extern char* _end;
-extern char* _heap_size;
-extern char* _fbss;
-extern char* _stack;
-extern char* _stack_size;
+extern char *_end;
+extern char *_heap_size;
+extern char *_fbss;
+extern char *_stack;
+extern char *_stack_size;
 
 __attribute__((weak)) void _ps2sdk_memory_init();
 __attribute__((weak)) void _init();
 __attribute__((weak)) void _fini();
 
-void _libcglue_args_parse(int argc, char** argv);
+void _libcglue_args_parse(int argc, char **argv);
 void _libcglue_init();
 void _libcglue_deinit();
-int main(int argc, char** argv);
+int main(int argc, char **argv);
 
 static void _main();
 
@@ -40,49 +40,93 @@ static struct sargs_start *args_start;
  * This function sets up the stack and heap.
  * DO NOT USE THE STACK IN THIS FUNCTION!
  */
-void __start(struct sargs_start *pargs)
-{
-    asm volatile(
-        "# Clear bss area       \n"
-        ".set noat              \n"
-        "la   $2, _fbss         \n"
-        "la   $3, _end          \n"
-        "1:                     \n"
-        "sltu   $1, $2, $3      \n"
-        "beq   $1, $0, 2f       \n"
-        "nop                    \n"
-        "sq   $0, ($2)          \n"
-        "addiu   $2, $2, 16     \n"
-        "j   1b                 \n"
-        "nop                    \n"
-        "2:                     \n"
-        "                       \n"
-        "# Save first argument  \n"
-        "sw     %1, %0          \n"
-        "                       \n"
-        "# SetupThread          \n"
-        "la     $4, _gp         \n"
-        "la     $5, _stack      \n"
-        "la     $6, _stack_size \n"
-        "la     $7, args	    \n"
-        "la     $8, ExitThread  \n"
-        "move   $gp, $4         \n"
-        "addiu  $3, $0, 60      \n"
-        "syscall                \n"
-        "move   $sp, $2         \n"
-        "                       \n"
-        "# Jump to _main        \n"
-        "j      %2              \n"
-        ".set at              \n"
-        : /* No outputs. */
-        : "m"(args_start), "r"(pargs), "Csy"(_main)
-        : "1", "2", "3", "4", "5", "6", "7", "8");
-}
+
+// void __start(struct sargs_start *pargs)
+__asm__(
+    ".global  __start          \n"
+    ".ent     __start          \n"
+    "__start:                  \n"
+    ".set push                 \n"
+    ".set noat                 \n"
+    ".set noreorder            \n"
+    "    la $2, _fbss          \n"
+    "    la $3, _end           \n"
+    "    1:                    \n"
+    "    sltu $1, $2, $3       \n"
+    "    beq $1, $0, 2f        \n"
+    "    nop                   \n"
+    "    sq $0, ($2)           \n"
+    "    addiu $2, $2, 16      \n"
+    "    j 1b                  \n"
+    "    nop                   \n"
+    "    2:                    \n"
+
+    // Save first argument
+    "    la $2, args_start     \n"
+    "    sw $4, 0($2)          \n"
+
+    // SetupThread
+    "    la $4, _gp            \n"
+    "    la $5, _stack         \n"
+    "    la $6, _stack_size    \n"
+    "    la $7, args           \n"
+    "    la $8, ExitThread     \n"
+    "    move $gp, $4          \n"
+    "    li $3, 0x3c           \n"
+    "    syscall               \n"
+    "    move $sp, $2          \n"
+
+    // Jump to _main
+    "    j      _main          \n"
+    "    nop                   \n"
+    ".set pop                  \n"
+    ".end __start              \n");
+
+
+
+// void __start(struct sargs_start *pargs)
+//{
+//     asm volatile(
+//         "# Clear bss area       \n"
+//         ".set noat              \n"
+//         "la   $2, _fbss         \n"
+//         "la   $3, _end          \n"
+//         "1:                     \n"
+//         "sltu   $1, $2, $3      \n"
+//         "beq   $1, $0, 2f       \n"
+//         "nop                    \n"
+//         "sq   $0, ($2)          \n"
+//         "addiu   $2, $2, 16     \n"
+//         "j   1b                 \n"
+//         "nop                    \n"
+//         "2:                     \n"
+//         "                       \n"
+//         "# Save first argument  \n"
+//         "sw     %1, %0          \n"
+//         "                       \n"
+//         "# SetupThread          \n"
+//         "la     $4, _gp         \n"
+//         "la     $5, _stack      \n"
+//         "la     $6, _stack_size \n"
+//         "la     $7, args	    \n"
+//         "la     $8, ExitThread  \n"
+//         "move   $gp, $4         \n"
+//         "addiu  $3, $0, 60      \n"
+//         "syscall                \n"
+//         "move   $sp, $2         \n"
+//         "                       \n"
+//         "# Jump to _main        \n"
+//         "j      %2              \n"
+//         ".set at              \n"
+//         : /* No outputs. */
+//         : "m"(args_start), "r"(pargs), "Csy"(_main)
+//         : "1", "2", "3", "4", "5", "6", "7", "8");
+// }
 
 /*
  * Intermediate function between _start and main, stack can be used as normal.
  */
-static void _main()
+__attribute__((__used__)) static void _main()
 {
     int retval;
     struct sargs *pa;
@@ -97,7 +141,7 @@ static void _main()
     // NOTE: this call can restart the application
     if (_ps2sdk_memory_init)
         _ps2sdk_memory_init();
-    
+
     // Initialize the kernel (Apply necessary patches).
     _InitSys();
 
